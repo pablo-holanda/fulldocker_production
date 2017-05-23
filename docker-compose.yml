@@ -1,0 +1,41 @@
+version: '2'
+
+services:
+    retsus:
+        build:
+            context: ./Dockerfiles
+            dockerfile: Dockerfile_Laravel
+        volumes:
+            - /mnt/data/apps:/apps
+        environment:
+            - "TZ=America/Sao_Paulo"
+        networks:
+            - code-network
+    db:
+        image: postgres
+        networks:
+            - code-network
+    redis:
+        image: redis
+        networks:
+            - code-network
+    web:
+        build:
+            context: ./Dockerfiles
+            dockerfile: Dockerfile_Nginx
+        ports:
+            - "80:80"
+            - "443:443"
+        volumes:
+            - /mnt/data/apps:/apps
+            - ./nginx_vhosts:/etc/nginx/conf.d/retsus.conf
+        environment:
+            - "TZ=America/Sao_Paulo"
+        networks:
+            - code-network
+        depends_on:
+            - retsus
+
+networks:
+    code-network:
+        driver: bridge
