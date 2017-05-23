@@ -32,6 +32,7 @@ services:
             - /mnt/data/apps:/apps
             - ./nginx_vhosts:/etc/nginx/conf.d/
             - ./letsencrypt:/etc/letsencrypt
+            - ./nginx_snippets:/etc/nginx/snippets
         environment:
             - "TZ=America/Sao_Paulo"
         networks:
