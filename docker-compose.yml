@@ -2,8 +2,7 @@ version: '2'
 
 services:
     retsus:
-        container_name:
-            - RETSUS
+        container_name: RETSUS
         build:
             context: ./Dockerfiles
             dockerfile: Dockerfile_Laravel
@@ -22,8 +21,7 @@ services:
         networks:
             - code-network
     web:
-        container_name:
-            - NGINX
+        container_name: NGINX
         build:
             context: ./Dockerfiles
             dockerfile: Dockerfile_Nginx
