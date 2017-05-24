@@ -12,6 +12,17 @@ services:
             - "TZ=America/Sao_Paulo"
         networks:
             - code-network
+    sabia:
+        container_name: SABIA
+        build:
+            context: ./Dockerfiles
+            dockerfile: Dockerfile_Laravel
+        volumes:
+            - /mnt/data/apps:/apps
+        environment:
+            - "TZ=America/Sao_Paulo"
+        networks:
+            - code-network
     db:
         image: postgres
         networks:
