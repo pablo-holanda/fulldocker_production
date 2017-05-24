@@ -43,7 +43,7 @@ ENV LANGUAGE pt_BR:pt
 ENV LC_ALL pt_BR.UTF-8
 
 # Add crontab file in the cron directory
-ADD ./cron_jobs/retsus-cron /etc/cron.d/retsus-cron
+ADD cron_jobs/retsus-cron /etc/cron.d/retsus-cron
 
 # Give execution rights on the cron job
 RUN chmod 0644 /etc/cron.d/retsus-cron
