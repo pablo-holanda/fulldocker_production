@@ -1,0 +1,20 @@
+FROM debian:stretch-slim
+
+# Packages
+RUN apt-get update && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y \
+        git \
+        locales \
+        libpq-dev \
+        python-pip \
+        python-dev \
+        libpq-dev \
+    && rm -r /var/lib/apt/lists/*
+
+RUN locale-gen pt_BR.UTF-8 pt_br && dpkg-reconfigure locales
+
+RUN pip install gunicorn
+
+ENV LANG pt_BR.UTF-8
+ENV LANGUAGE pt_BR:pt
+ENV LC_ALL pt_BR.UTF-8
