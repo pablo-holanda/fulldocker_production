@@ -38,8 +38,6 @@ services:
             dockerfile: Dockerfile_Django
         volumes:
             - /mnt/data/apps:/apps
-        ports:
-            - "80:80"
         command: bash -c "pip install -r requirements.txt && python manage.py runserver 0.0.0.0:80"
         networks:
             - code-network
