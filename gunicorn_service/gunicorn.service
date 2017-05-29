@@ -1,0 +1,12 @@
+[Unit]
+Description=gunicorn daemon
+After=network.target
+
+[Service]
+User=root
+Group=www-data
+WorkingDirectory=/apps/itinerariosdosaber
+ExecStart=gunicorn --access-logfile - --workers 3 --bind unix:/apps/itinerariosdosaber/itinerarios.sock itinerarios.wsgi:application
+
+[Install]
+WantedBy=multi-user.target

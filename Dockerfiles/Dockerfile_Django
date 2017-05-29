@@ -1,8 +1,8 @@
-FROM debian:stretch-slim
+FROM python:2
 
 # Packages
-RUN apt-get update && \
-    DEBIAN_FRONTEND=noninteractive apt-get install -y \
+RUN apt update && \
+    DEBIAN_FRONTEND=noninteractive apt install -y \
         git \
         locales \
         libpq-dev \
@@ -28,3 +28,8 @@ ENV LC_TELEPHONE="pt_BR.UTF-8"
 ENV LC_MEASUREMENT="pt_BR.UTF-8"
 ENV LC_IDENTIFICATION="pt_BR.UTF-8"
 ENV LC_ALL=pt_BR.UTF-8
+
+RUN pip install gunicorn
+
+WORKDIR /apps/itinerariosdosaber
+
